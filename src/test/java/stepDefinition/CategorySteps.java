@@ -12,8 +12,9 @@ public class CategorySteps {
 
     @Given("user goes to")
     public void userGoesTo() {
-        categoryPage.goToSite();
         categoryPage = new CategoryPage(BrowserDriver.driver);
+        categoryPage.goToSite();
+
     }
 
     @When("go to category")

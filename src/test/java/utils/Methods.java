@@ -24,21 +24,21 @@ public class Methods {
     }
     public void clickTo(By locator){
         driver.findElement(locator).click();
-        Log.info(locator + "elementine tıklandı.");
+
 
     }
     public void sendKeys(By locator, String text){
         driver.findElement(locator).sendKeys(text);
-        Log.info("Elementine" + text + " değeri yazıldı");
+
     }
     public WebElement find(By locator) {
         return driver.findElement(locator);
 
     }
-    public void waitForElementVisible(By locator, int timeoutSeconds) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
+    public void waitForElementVisible(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-        Log.info("Element görünür olana kadar beklendi." + locator);
+
     }
     public boolean visibleIsDisplayed(By locator) {
         try {
@@ -51,16 +51,16 @@ public class Methods {
         WebElement element = driver.findElement(locator);
         JavascriptExecutor executor = (JavascriptExecutor)driver;
         executor.executeScript("arguments[0].click();", element);
-        Log.info("Elemente javaScript ile tıklandı " + locator);
+
     }
     public void saveElementTempData(By locator){
-        waitForElementVisible(locator,5);
+        waitForElementVisible(locator);
         tempData = driver.findElement(locator).getText();
-        Log.info("element tempData değişkenine kaydedildi"  + " tempData değeri : " + tempData);
+
 
     }
     public int parseInteger(By locator){
-        waitForElementVisible(locator,5);
+        waitForElementVisible(locator);
         String elementText = driver.findElement(locator).getText();
         return Integer.parseInt(elementText.trim());
     }
