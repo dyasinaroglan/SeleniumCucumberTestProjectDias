@@ -8,27 +8,28 @@ import utils.Methods;
 
 public class CategoryPage extends Methods {
 
-    private static final Logger logger = LoggerFactory.getLogger(CategoryPage.class);
-
     public CategoryPage(WebDriver driver){
         super(driver);
     }
 
     private String url = "https://www.hepsiburada.com/";
+    private By cookieAccept = By.id("onetrust-accept-btn-handler");
     private By electronicButton = By.xpath("//span[contains(@class, 'sf-MenuItems')][span[text()='Elektronik']]");
-    private By computerTabletButton = By.xpath("//a[contains(text(), 'Bilgisayar/Tablet')]");
+    private By tabletButton = By.xpath("//a[text()='Tablet']");
 
-    public void goToSite(){
-        logger.info("siteye gidilir." + url);
+
+    public void goToSiteAndAcceptCookie(){
         goToUrl(url);
+        clickTo(cookieAccept);
+
     }
-    public void electronicButtonClick(){
-        clickTo(electronicButton);
-        logger.info("elementine tıklandı " + electronicButton);
+    public void electronicButtonClick() {
+        refresh();
+        retryingFindClick(electronicButton);
+
     }
     public void computerTabletButtonClick(){
-        waitForElementVisible(computerTabletButton);
-        clickTo(computerTabletButton);
-    }
+        clickTo(tabletButton);
 
+    }
 }

@@ -13,12 +13,12 @@ public class CategorySteps {
     @Given("user goes to")
     public void userGoesTo() {
         categoryPage = new CategoryPage(BrowserDriver.driver);
-        categoryPage.goToSite();
+        categoryPage.goToSiteAndAcceptCookie();
 
     }
 
     @When("go to category")
-    public void goToCategory() {
+    public void goToCategory() throws InterruptedException {
         categoryPage.electronicButtonClick();
     }
 
