@@ -10,3 +10,4 @@ Feature: Step by step Test Scenario
     And move to the next tab
     And The product price is memorized before adding to cart
     And Click on the Add to Cart button and click on the Go to Cart button on the screen that opens.
+    Then Check that the product price recorded in the TempData variable is equal to the product price in the Cart.

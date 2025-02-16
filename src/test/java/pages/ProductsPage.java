@@ -19,6 +19,7 @@ public class ProductsPage extends Methods {
     private By defaultPrice = By.cssSelector("div[data-test-id='default-price'] div span");
     private By addToCartButton = By.cssSelector("button[data-test-id='addToCart']");
     private By goToCartButton = By.xpath("//button[text()='Sepete git']");
+    private By priceInBasket = By.cssSelector("div[class='product_price_uXU6Q']");
 
 
     public void HighestPricedProductSelectAndClick(){
@@ -35,5 +36,9 @@ public class ProductsPage extends Methods {
     public void addToCartAndGoToCartButtonClick(){
         clickTo(addToCartButton);
         clickTo(goToCartButton);
+    }
+    public void priceVerification() {
+        waitForElementVisible(priceInBasket);
+        compareTextsEquals(priceInBasket);
     }
 }

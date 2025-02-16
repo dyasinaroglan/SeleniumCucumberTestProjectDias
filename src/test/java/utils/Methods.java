@@ -1,5 +1,6 @@
 package utils;
 
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,14 +18,12 @@ public class Methods {
     protected WebDriver driver;
     protected WebDriverWait wait;
     private static final Logger logger = LoggerFactory.getLogger(Methods.class);
-
-    String tempData;
+    public String tempData;
 
     public Methods(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
-
     public void goToUrl(String url) {
         driver.get(url);
         logger.info(url + " Sitesine gidildi.");
@@ -169,5 +168,12 @@ public class Methods {
             attempts++;
         }
         return result;
+    }
+    public void compareTextsEquals(By locator) {
+        String text1 = wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
+        logger.info("TempData: " + tempData);
+        logger.info("Text1: " + text1);
+        Assert.assertEquals("Hata mesaji - Değerler eşit değil!", tempData, text1);
+        logger.info(locator + " elementinin text icerigi bellekte tutulan deger ile ayni\n" + "Bellekte tutulan deger : " + tempData + "\n" + "Elementin text icerigi : " + text1);
     }
 }
