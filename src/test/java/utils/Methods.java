@@ -42,24 +42,11 @@ public class Methods {
 
     }
 
-    public WebElement find(By locator) {
-        return driver.findElement(locator);
-
-    }
-
     public void waitForElementVisible(By locator) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         logger.info("Element görünür olana kadar beklenildi. " + locator);
 
-    }
-
-    public boolean visibleIsDisplayed(By locator) {
-        try {
-            return driver.findElement(locator).isDisplayed();
-        } catch (Exception e) {
-            return false;
-        }
     }
 
     public void jsClick(By locator) {
@@ -73,12 +60,6 @@ public class Methods {
         waitForElementVisible(locator);
         tempData = driver.findElement(locator).getText();
 
-    }
-
-    public int parseInteger(By locator) {
-        waitForElementVisible(locator);
-        String elementText = driver.findElement(locator).getText();
-        return Integer.parseInt(elementText.trim());
     }
 
     public void scrollTo(By locator) {

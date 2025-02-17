@@ -1,15 +1,22 @@
 package stepDefinition;
 
 import io.cucumber.java.After;
-import io.cucumber.java.Before;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import utils.BrowserDriver;
+import utils.Browsers;
 
 public class Hooks {
 
-    @Before
-    public void setUp(){
+    @BeforeMethod
+    @Parameters("browser")
+    public void setUp(String br){
 
-        BrowserDriver.getDriver();
+        if (br.equalsIgnoreCase("FIREFOX")){
+            BrowserDriver.getDriver(Browsers.FIREFOX);
+        } else {
+            BrowserDriver.getDriver(Browsers.CHROME);
+        }
     }
     @After
     public void tearDown(){
