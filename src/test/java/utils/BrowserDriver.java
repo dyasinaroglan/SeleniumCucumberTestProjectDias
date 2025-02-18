@@ -1,46 +1,24 @@
 package utils;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class BrowserDriver {
 
     public static WebDriver driver;
+    public static ChromeOptions options;
 
-
-    public static void getDriver(Browsers browsers) {
-        if (driver == null) {
-            if(browsers.equals(Browsers.CHROME))
-            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/test/resources/drivers/chromedriver.exe");
-            driver = new ChromeDriver();
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--remote-allow-origins=*");
-            options.addArguments("--disable-dev-shm-usage");
-            options.addArguments("--no-sandbox");
-            driver = new ChromeDriver(options);
-            driver.manage().window().maximize();
-
-        } else if (browsers.equals(Browsers.FIREFOX)){
-            System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/src/test/resources/drivers/geckodriver.exe");
-            FirefoxOptions options = new FirefoxOptions();
-            driver = new FirefoxDriver(options);
-        } else {
-            throw new IllegalArgumentException("Tarayıcı geçersiz! Desteklenen tarayıcılar: Chrome, Firefox");
-        }
+    public BrowserDriver(){
+        options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+        //System.setProperty("webdriver.http.factory","jdk-http-client");
+        System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+ "/src/test/resources/drivers/chromedriver.exe");
+        this.driver = new ChromeDriver(options);
         driver.manage().window().maximize();
+        driver.get("https://www.hepsiburada.com/");
     }
-    public static void driverQuit() {
-        if (driver != null) {
-            driver.quit();
-            driver = null;
+        public void driverQuit(){
+           this.driver.quit();
         }
     }
-
-}

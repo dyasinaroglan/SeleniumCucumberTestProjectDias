@@ -12,14 +12,12 @@ public class CategoryPage extends Methods {
         super(driver);
     }
 
-    private String url = "https://www.hepsiburada.com/";
     private By cookieAccept = By.id("onetrust-accept-btn-handler");
     private By electronicButton = By.xpath("//span[contains(@class, 'sf-MenuItems')][span[text()='Elektronik']]");
     private By tabletButton = By.xpath("//a[text()='Tablet']");
 
 
     public void goToSiteAndAcceptCookie(){
-        goToUrl(url);
         clickTo(cookieAccept);
 
     }
