@@ -11,7 +11,7 @@ public class ProductsSteps {
 
     @And("Find the highest priced item and click on it")
     public void findTheHighestPricedItemAndClickOnIt() {
-        productsPage = new ProductsPage(BrowserDriver.driver);
+        productsPage = new ProductsPage(BrowserDriver.getDriver());
         productsPage.HighestPricedProductSelectAndClick();
     }
 

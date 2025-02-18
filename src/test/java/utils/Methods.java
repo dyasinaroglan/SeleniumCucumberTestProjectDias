@@ -23,10 +23,6 @@ public class Methods {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
-    public void goToUrl(String url) {
-        driver.get(url);
-        logger.info(url + " Sitesine gidildi.");
-    }
 
     public void clickTo(By locator) {
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));

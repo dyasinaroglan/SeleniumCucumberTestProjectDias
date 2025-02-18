@@ -10,7 +10,7 @@ public class FilterSteps {
 
     @And("Scroll the apple from the filter area and click the checkbox")
     public void scrollTheAppleFromTheFilterAreaAndClickTheCheckbox() {
-        filterPage = new FilterPage(BrowserDriver.driver);
+        filterPage = new FilterPage(BrowserDriver.getDriver());
         filterPage.appleScrollAndCheckboxClick();
     }
 

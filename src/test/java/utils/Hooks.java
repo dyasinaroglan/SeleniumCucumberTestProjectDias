@@ -3,8 +3,8 @@ package utils;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
-public class Hooks {
 
+public class Hooks {
     public static BrowserDriver driver;
 
 
