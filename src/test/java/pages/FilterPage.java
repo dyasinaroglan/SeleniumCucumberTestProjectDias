@@ -20,7 +20,7 @@ public class FilterPage extends Methods {
     }
     public void inc133 () {
         waitForElementVisible(inc133CheckBox);
-        javascriptclicker(inc133CheckBox);
+        clickTo(inc133CheckBox);
         refresh();
     }
 }

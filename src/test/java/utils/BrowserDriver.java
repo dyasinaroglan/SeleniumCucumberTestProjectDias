@@ -35,6 +35,7 @@ public class BrowserDriver {
                 System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "NUL");
                 firefoxOptions = new FirefoxOptions();
                 firefoxOptions.setLogLevel(FirefoxDriverLogLevel.FATAL);
+                firefoxOptions.addArguments("--width=1920", "--height=1080");
                 driver.set(new FirefoxDriver(firefoxOptions));
                 break;
 

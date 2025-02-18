@@ -99,24 +99,26 @@ public class Methods {
                 maxPriceElement = priceEl;
             }
         }
-        logger.info("maxPrice : " + maxPriceElement);
+        logger.info("maxPrice : " + maxPriceElement.getText());
         return maxPriceElement;
 
     }
 
     public void clickMaxPrice(By priceLocator) {
         WebElement maxElement = clickHighestPricedProduct(priceLocator);
-        Actions actions = new Actions(driver);
+
         if (maxElement != null) {
             logger.info("max element : " + maxElement);
-            actions.moveToElement(maxElement).click().perform();
+            maxElement.click();
         }
     }
 
     public void FocusLastTab() {
         ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(tabs.size() - 1));
+        driver.manage().window().maximize();
         logger.info("En son açılan sekmeye odaklanıldı.");
+
     }
 
     public void saveText(By locator) {

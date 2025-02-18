@@ -4,16 +4,19 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
 
-public class Hooks {
-    public static BrowserDriver driver;
 
+public class Hooks {
+
+    private static BrowserDriver browserDriver;
 
     @Before
     public void setup(){
-        driver = new BrowserDriver();
+        browserDriver = new BrowserDriver();
     }
     @After
     public void tearDown(){
-        driver.driverQuit();
+        if(browserDriver != null) {
+            browserDriver.driverQuit();
+        }
     }
 }
