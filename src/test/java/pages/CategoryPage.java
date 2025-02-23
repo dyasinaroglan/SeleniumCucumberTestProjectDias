@@ -6,28 +6,32 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utils.Methods;
 
-public class CategoryPage extends Methods {
+public class CategoryPage {
+
+    private Methods methods;
+
 
     public CategoryPage(WebDriver driver){
-        super(driver);
+        this.methods = new Methods(driver);
     }
 
     private By cookieAccept = By.id("onetrust-accept-btn-handler");
     private By electronicButton = By.xpath("//span[contains(@class, 'sf-MenuItems')][span[text()='Elektronik']]");
+
     private By tabletButton = By.xpath("//a[text()='Tablet']");
 
 
     public void goToSiteAndAcceptCookie(){
-        clickTo(cookieAccept);
+        methods.clickTo(cookieAccept);
 
     }
     public void electronicButtonClick() {
-        refresh();
-        retryingFindClick(electronicButton);
+        methods.refresh();
+        methods.actionsClick(electronicButton);
 
     }
     public void computerTabletButtonClick(){
-        clickTo(tabletButton);
+        methods.actionsClick(tabletButton);
 
     }
 }

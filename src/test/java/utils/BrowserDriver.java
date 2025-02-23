@@ -7,6 +7,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxDriverLogLevel;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+import java.time.Duration;
+
 
 public class BrowserDriver {
 
@@ -44,6 +46,7 @@ public class BrowserDriver {
         }
 
         getDriver().manage().window().maximize();
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         getDriver().get("https://www.hepsiburada.com/");
     }
     public static WebDriver getDriver() {

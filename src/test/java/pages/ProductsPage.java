@@ -10,10 +10,12 @@ import utils.Methods;
 
 import java.util.List;
 
-public class ProductsPage extends Methods {
+public class ProductsPage {
+
+    private Methods methods;
 
     public ProductsPage(WebDriver driver) {
-        super(driver);
+        this.methods = new Methods(driver);
     }
     private By allPrice = By.cssSelector("div[data-test-id='price-current-price']");
     private By defaultPrice = By.cssSelector("div[data-test-id='default-price'] div span");
@@ -23,22 +25,22 @@ public class ProductsPage extends Methods {
 
 
     public void HighestPricedProductSelectAndClick(){
-        waitForElementVisible(allPrice);
-        clickMaxPrice(allPrice);
+        methods.waitForElementVisible(allPrice);
+        methods.clickMaxPrice(allPrice);
     }
     public void endTabFocus(){
-        FocusLastTab();
+        methods.FocusLastTab();
     }
     public void tempDataTextSave(){
-        waitForElementVisible(defaultPrice);
-        saveText(defaultPrice);
+        methods.waitForElementVisible(defaultPrice);
+        methods.saveText(defaultPrice);
     }
     public void addToCartAndGoToCartButtonClick(){
-        clickTo(addToCartButton);
-        clickTo(goToCartButton);
+        methods.clickTo(addToCartButton);
+        methods.clickTo(goToCartButton);
     }
     public void priceVerification() {
-        waitForElementVisible(priceInBasket);
-        compareTextsEquals(priceInBasket);
+        methods.waitForElementVisible(priceInBasket);
+        methods.compareTextsEquals(priceInBasket);
     }
 }
